@@ -1,0 +1,23 @@
+
+# MenuBar Settings
+
+
+
+menu = MenuBar(app, 
+               toplevel=["screen type preferences"],
+               options=[
+               [  
+                   ["default", default_mode],
+                   ["light mode", light_mode],
+                   ["dark mode", dark_mode]
+               ]
+           ]
+        )
+
+
+##### DISPLAY #####
+
+
+
+app.display() # Display app on startup
+
