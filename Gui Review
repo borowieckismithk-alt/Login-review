@@ -1,0 +1,49 @@
+
+# Create the review window (use a Window tied to the main app)
+review_window = Window(app, title="Leave a Review",height=400,bg="#E34234")
+
+# Centered box for stars inside the review window
+star_box = Box(review_window, layout="grid", align="top")
+star_box.bg = "#FFFFFF"
+
+#go back to the login page
+
+review_back = PushButton(review_window, text="Back", command=review_back, align="left")
+review_back.bg = "#FFFFFF"
+review_exit_box = Box(review_window, width="fill", align="top")
+review_exit_box.bg = "#FFFFFF"
+
+# Create star buttons
+for i in range(5):
+    btn = PushButton(
+        star_box,
+        text=EMPTY_STAR,
+        grid=[i, 0],
+        width=2,
+        command=update_stars,
+        args=[i + 1]
+    )
+    btn.text_size = 24
+    btn.text_color = EMPTY_COLOR
+    star_buttons.append(btn)
+#
+review_blanktxt = Text(review_window, text="            ")
+
+review_txt = Text(review_window, text="Please leave a review",color="#FFFFFF")
+
+review_txtbox = TextBox(review_window, multiline=True, width=60, height=12)
+review_txtbox.bg = "#FFFFFF"
+review_submit = PushButton(review_window, text="Submit Review", command=submit_review)
+review_submit.bg = "#FFFFFF"
+#
+# hide windows
+#
+sign_window.hide() # hide until needed
+review_window.hide() # hide the review window until login succeeds
+
+# helper: add the same top-right image to any guizero Window or App
+add_top_right_image(app)
+add_top_right_image(sign_window)
+add_top_right_image(review_window)
+
+
