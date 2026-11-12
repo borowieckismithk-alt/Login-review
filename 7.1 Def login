@@ -1,0 +1,19 @@
+def login_user():
+    # Procedure to validate login inputs and  logs in 
+    global user_LoggedIn # Global variable so that the UserID of the current user logged in can be used elsewhere as a FK
+    if login_username.value == "":
+        info("Error", "You must enter a valid username") # Checks if username input is empty (presence check)
+    elif login_pw.value == "":
+        info("Error", "You must enter a valid password") # 
+    else:
+        
+        query = "SELECT * from User WHERE user_name = ? AND user_password = ?"
+        rows = query_database(database_file, query, (login_username.value, login_pw.value)) # SQL query to retrieve username and password from database 
+        if len(rows) == 0:
+            info("Error", "Invalid Password Or Username") 
+        else:
+            user_LoggedIn = rows[0][0] # Set UserID to user_LoggedIn variable
+            # open the review window after successful login
+            info("Success", "Login successful")
+            app.hide()                # hide main login window
+            review_window.show()      # show the stars rev
