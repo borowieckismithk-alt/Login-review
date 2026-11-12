@@ -1,0 +1,16 @@
+def add_top_right_image(window):
+    image_path = 'ReviewPageImage.png'
+    if not os.path.exists(image_path):
+        return
+    try:
+        # use tkinter directly to pin the image to the absolute top-right (no layout padding)
+        from tkinter import PhotoImage, Label
+        img = PhotoImage(file=image_path)
+        lbl = Label(window.tk, image=img, borderwidth=0)
+        lbl.image = img                 # keep a reference so image isn't garbage-collected
+        lbl.place(relx=1.0, rely=0.0, anchor='ne')  # anchor to top-right of the window
+    except Exception:
+        # graceful fallback to guizero if tkinter ops fail
+        header = Box(window, width="fill", align="top", height=0)
+        Picture(header, align="right", image=image_path)
+                            
