@@ -1,0 +1,17 @@
+##  navigation procedures               
+#
+def Open_Signup():
+    sign_window.show()
+    app.hide()
+#  
+#  
+def go_back():
+    sign_window.hide()
+    app.show()
+#   
+#
+#   FRONT END IS DEFINED HERE
+def review_back():
+    review_window.hide()
+    app.show()
+
