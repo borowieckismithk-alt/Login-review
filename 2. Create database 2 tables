@@ -1,0 +1,50 @@
+# SQL creation and inserting test data
+sql = """
+    CREATE TABLE "User" ( 
+    "userID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "user_name" TEXT,
+    "user_firstname" TEXT,
+    "user_surname" TEXT,
+    "user_password" TEXT,
+    "user_email" TEXT
+
+    );
+    CREATE TABLE "Review" (
+    "Review_ID"  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "Review_Text" TEXT,
+    "Review_Stars" TEXT,
+    "userID"  INTEGER,
+
+    FOREIGN KEY(userID) REFERENCES User(userID)
+    );
+    insert into User (user_name, user_firstname, user_surname, user_password, user_email) values ('UCas', 'EEsh', 'Cas', 'pw1', 'Cas@gmail.com');
+    insert into User (user_name, user_firstname, user_surname, user_password, user_email) values ('UKain', 'BSmith', 'Kain', 'pw1', 'Kain@gmail.com');
+    insert into User (user_name, user_firstname, user_surname, user_password, user_email) values ('UDyl', 'an', 'Dyl', 'pw1', 'Dylan@gmail.com');
+    insert into Review (Review_Text, Review_Stars, userID) values ('Was wicked', '5','1');
+    insert into Review (Review_Text, Review_Stars, userID) values ('Was not wicked', '1','2');
+    insert into Review (Review_Text, Review_Stars, userID) values ('Was sort of wicked', '3','3');
+    """
+#
+# global variables
+#
+database_file = 'myDB.db'
+#
+current_rating = 0
+star_buttons = []
+#
+# Constants
+FILLED_STAR = "★"
+EMPTY_STAR = "☆"
+FILLED_COLOR = "gold"
+EMPTY_COLOR = "black"
+
+# Global state
+
+#
+if os.path.exists(database_file):
+   os.remove(database_file) # Removes database each time program starts for test purposes
+#
+conn = sqlite3.connect(database_file) 
+cursor = conn.cursor()
+cursor.executescript(sql)
+conn.commit() # Initialising SQL integration 
