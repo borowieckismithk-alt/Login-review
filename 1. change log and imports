@@ -1,0 +1,22 @@
+################################################################################################
+#                   PROGRAM NAME: Kain                                                         #
+#                   FIRST CREATED: 10/09/2026                                                  #
+#                   PROGRAMMER: Kain Borowiecki-Smith (KBS)                                    #
+#                                                                                              #
+################################################################################################
+#                   CHANGE LOG:
+#                   +--------------------------------------------------------------------------+
+#                   | 25/06/2025    V1       DATABASE/LOGIN/SIGNUP CREATED             KBS     |
+#                   | 06/07/2025    V2       DASHBOARD/???????? CREATED                KBS     |
+#                   | 04/09/2026    V3       FIXING STUFF                              KBS     |
+#                   +--------------------------------------------------------------------------+
+#
+#
+from guizero import App, Window, PushButton, Text, Box, TextBox, Picture, MenuBar, info, error, appJar # Guizero imports to create front end
+
+import sqlite3
+#from sqlite3 import Error # sqlite import to create and manage database
+import os
+import os.path # OS import to edit system files
+
+
