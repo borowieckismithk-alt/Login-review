@@ -1,0 +1,17 @@
+
+def update_stars(new_rating):
+    # Function to update star states
+    global current_rating
+    if current_rating == new_rating:
+        current_rating = 0
+    else:
+        current_rating = new_rating
+                                
+    # Update stars based on current_rating
+    for i in range(5):
+        if i < current_rating:
+            star_buttons[i].text = FILLED_STAR
+            star_buttons[i].text_color = FILLED_COLOR
+        else:
+            star_buttons[i].text = EMPTY_STAR
+            star_buttons[i].text_color = EMPTY_COLOR  
