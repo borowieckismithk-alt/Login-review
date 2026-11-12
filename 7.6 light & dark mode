@@ -1,0 +1,53 @@
+
+def light_mode():
+    # Adding a light mode to comply with WCAG
+    # Windows
+    app.bg = "#C9C9C9"
+    sign_window.bg = "#C9C9C9"
+    review_window.bg = "#C9C9C9"
+
+    # Boxes
+    login_box.bg = "#FFFFFF"
+    sign_box.bg = "#FFFFFF"
+    review_exit_box.bg = "#FFFFFF"
+
+    # Text
+    app.text_color = "#000000"
+    sign_window.text_color = "#000000"
+    review_window.text_color = "#000000"
+
+
+def dark_mode():
+    # Adding a dark mode to comply with WCAG
+    # Windows
+    app.bg = "#565656"
+    sign_window.bg = "#565656"
+    review_window.bg = "#565656"
+
+    # Boxes
+    login_box.bg = "#FFFFFF"
+    sign_box.bg = "#FFFFFF"
+    review_exit_box.bg = "#FFFFFF"
+
+    # Text
+    app.text_color = "#000000"
+    sign_window.text_color = "#000000"
+    review_window.text_color = "#000000"  
+
+
+def default_mode():
+    
+    # Windows
+    app.bg = "#E34234"
+    sign_window.bg = "#E34234"
+    review_window.bg = "#E34234"
+
+    # Boxes
+    login_box.bg = "#FFFFFF"
+    sign_box.bg = "#FFFFFF"
+    review_exit_box.bg = "#FFFFFF"
+
+    # Text
+    app.text_color = "#000000"
+    sign_window.text_color = "#000000"
+    review_window.text_color = "#000000"  
