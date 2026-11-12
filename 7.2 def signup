@@ -1,0 +1,57 @@
+def confirm_signup():
+    # Read widget values
+    username = user_name.value.strip()
+    password = sign_txtbox2.value
+    confirm_password = sign_txtbox3.value
+    firstname = user_firstname.value.strip()
+    surname = sign_txtbox5.value.strip()
+    email = sign_txtbox6.value.strip()
+
+    # Basic validations
+    if not username:
+        info("Error", "You must enter a username")
+        return
+    if not username.isalpha():
+        info("Error", "Username cannot contain numbers or special characters") #Type check validation 
+        return
+    if not firstname:
+        info("Error", "You must enter a first name")
+        return
+    if not firstname.isalpha():
+        info("Error", "Firstname cannot contain numbers or special characters")
+        return
+    if not password:
+        info("Error", "You must enter a password")  #Needs password strength check
+        return
+    if password != confirm_password:
+        info("Error", "Passwords do not match")
+        return
+    if not email or "@" not in email or "." not in email: #Format check
+        info("Error", "Please enter a valid email address")
+        return
+
+    # Ensure username is unique
+    existing = query_database(database_file, "SELECT userID FROM User WHERE user_name = ?", (username,))
+    if existing:
+        info("Error", "Username already exists")
+        return
+
+   #Insert new user
+    try:
+        execute_sql(
+            database_file,
+            "INSERT INTO User (user_name, user_firstname, user_surname, user_password, user_email) VALUES (?, ?, ?, ?, ?)",
+            (username, firstname, surname, password, email),
+        )
+        info("Success", "Account successfully created")
+
+        # clear the form
+        user_name.value = ""
+        sign_txtbox2.value = ""
+        sign_txtbox3.value = ""
+        user_firstname.value = ""
+        sign_txtbox5.value = ""
+        sign_txtbox6.value = ""
+
+    except Exception as e:
+        info("Error", f"Failed to create account: {e}")
